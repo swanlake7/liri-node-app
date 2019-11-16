@@ -41,6 +41,7 @@ function idk(command) {
 
                 var date = moment(res.data.events[0].announce_date).format('MM/DD/YYYY');
                 var results = '\n\n' + command + "\nVenue Name: " + res.data.events[0].venue.name + "\nVenue Location: " + res.data.events[0].venue.display_location + "\nDate: " + date;
+                fs.truncate('log.txt', 0, function(){console.log('*****previous logs were deleted.******')})
 
                 fs.appendFile('log.txt', results, function (err) {
                     if (err) throw err;
@@ -62,6 +63,8 @@ function idk(command) {
               + "\nAlbum Name: " + data.tracks.items[0].album.name  ;
               
             console.log(results);
+            fs.truncate('log.txt', 0, function(){console.log('*****previous logs were deleted.******')})
+
             fs.appendFile('log.txt', results, function (err) {
                 if (err) throw err;
                 console.log('\n ------------Command & Results Saved!--------------');
@@ -80,6 +83,8 @@ function idk(command) {
                     res.data.Rated + "\nRotten Tomato Rating: " + res.data.tomatoRating + "\nCountry of Production: "
                     + res.data.Country + "\nLanguage: " +
                     res.data.Language + "\nPlot: " + res.data.Plot + "\nActors: " + res.data.Actors + '\n';
+
+                    fs.truncate('log.txt', 0, function(){console.log('*****previous logs were deleted.******')})
 
                 fs.appendFile('log.txt', results, function (err) {
                     if (err) throw err;
